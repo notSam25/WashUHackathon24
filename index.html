@@ -1,13 +1,88 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Static Site</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
   </head>
   <body>
-    <h1>Welcome to My Static Site!</h1>
-    <p>This is a static HTML page.</p>
+    <div class="section bg-primary h-f">
+      <div class="background-image blur-sm"></div>
+      <div class="text-overlay text-5xl font-bold text-black">
+        <h1>[Place Holder Name]</h1>
+        <div class="text-lg text-black">
+          <p>Compute a patient's Triage in an instant!</p>
+        </div>
+      </div>
+    </div>
+    <div class="section bg-secondary py-3">
+      <div class="left text-center text-5xl">
+        <h1>What is a Triage?</h1>
+      </div>
+      <div class="right text-2xl text-right pr-5">
+        <h1>
+          According to the Merriam Webster Dictionary, a triage is "the sorting
+          of patients (as in an emergency room) according to the urgency of
+          their need for care."
+        </h1>
+      </div>
+    </div>
+    <div class="section bg-primary py-3">
+      <div class="left text-2xl text-left pl-5">
+        <h1>
+          By knowing how to sort the order of patients by severity of injury,
+          that allows a institution to prioritize the highest risk patients
+          first. This allows the highest priority patients to get the urgent
+          care they need.
+        </h1>
+      </div>
+      <div class="right text-center text-5xl">
+        <h1>How is this helpful?</h1>
+      </div>
+    </div>
+    <div class="section bg-secondary py-3">
+      <div class="left text-center text-5xl">
+        <h1>Who is this for?</h1>
+      </div>
+      <div class="right text-2xl text-right pr-5">
+        <h1>
+          Institutions like hospitals, urgent care facilities, veterinarian
+          clinics, and others would be able to sort their incoming patients,
+          streamlining the process of patient intake and allowing for a more
+          efficient workplace.
+        </h1>
+      </div>
+    </div>
+    <div class="section bg-primary py-3">
+      <div class="left text-2xl text-left pl-5">
+        <h1>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
+          tempor lacus. Nunc eget aliquam lectus. Nulla sit amet massa sed massa
+          sagittis varius nec ut erat. Aliquam volutpat felis.
+        </h1>
+      </div>
+      <div class="right text-center text-5xl">
+        <h1>Meet the Team!</h1>
+      </div>
+    </div>
+    <div
+      class="section bg-secondary text-center text-5xl py-10"
+      style="display: grid"
+    >
+      <h1>Check out a demo!</h1>
+    </div>
   </body>
 </html>
