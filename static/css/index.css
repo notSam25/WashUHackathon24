@@ -83,6 +83,10 @@ small {
 }
 
 .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center;
   width: 50%;
   height: 100%;
   top: 0;
