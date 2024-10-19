@@ -1,0 +1,102 @@
+:root {
+  --text: #e4eaf0;
+  --background: #0e1419;
+  --background-secondary: #161b20;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Inter:700|Inter:400");
+
+body {
+  font-family: "Inter";
+  font-weight: 400;
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.75;
+  display: grid;
+  place-items: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Inter";
+  font-weight: 700;
+}
+
+html {
+  font-size: 100%;
+} /* 16px */
+
+h1 {
+  font-size: 4.21rem; /* 67.36px */
+}
+
+h2 {
+  font-size: 3.158rem; /* 50.56px */
+}
+
+h3 {
+  font-size: 2.369rem; /* 37.92px */
+}
+
+h4 {
+  font-size: 1.777rem; /* 28.48px */
+}
+
+h5 {
+  font-size: 1.333rem; /* 21.28px */
+}
+
+small {
+  font-size: 0.75rem; /* 12px */
+}
+
+.section {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+}
+
+.section .left {
+  width: 50%;
+  left: 0%;
+  height: 100%;
+}
+
+.section .right {
+  width: 50%;
+  left: 50%;
+  height: 100%;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/static/media/header.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.text-overlay {
+  position: absolute;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bg-primary {
+  background-color: var(--background);
+}
+.bg-secondary {
+  background-color: var(--background-secondary);
+}
