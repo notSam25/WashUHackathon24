@@ -6,83 +6,78 @@
     <title>Document</title>
     <link rel="stylesheet" href="/static/css/index.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              clifford: "#da373d",
-            },
-          },
-        },
-      };
-    </script>
   </head>
   <body>
-    <div class="section bg-primary h-f">
-      <div class="background-image blur-sm"></div>
-      <div class="text-overlay text-5xl font-bold text-black">
-        <h1>[Place Holder Name]</h1>
-        <div class="text-lg text-black">
-          <p>Compute a patient's Triage in an instant!</p>
+    <!-- Introduction section -->
+    <div class="section bg-primary">
+      <div class="left">
+        <div
+          class="background-image"
+          style="background-image: url('/static/media/pngegg.png')"
+        ></div>
+        <h1 class="text-4xl" style="margin-top: 15px">Project Name</h1>
+      </div>
+      <div class="right text-center" style="margin-top: 100px">
+        <h1 class="text-3xl font-bold">
+          Optimize Patient Care with AI-Driven Management
+        </h1>
+        <p class="text-base text-gray-400" style="padding-top: 30px">
+          Harness the power of AI to seamlessly sort and prioritize patients by
+          triage, ensuring faster, smarter, and more effective healthcare.
+          Designed for a more efficient, patient-centered approach to medical
+          management.
+        </p>
+        <div style="padding-top: 30px">
+          <button class="button-primary text-lg">Learn More</button>
+          <button class="button-secondary text-lg bg-slate-600">
+            Try a Demo
+          </button>
         </div>
       </div>
     </div>
-    <div class="section bg-secondary py-3">
-      <div class="left text-center text-5xl">
-        <h1>What is a Triage?</h1>
-      </div>
-      <div class="right text-2xl text-right pr-5">
-        <h1>
-          According to the Merriam Webster Dictionary, a triage is "the sorting
-          of patients (as in an emergency room) according to the urgency of
-          their need for care."
-        </h1>
-      </div>
-    </div>
-    <div class="section bg-primary py-3">
-      <div class="left text-2xl text-left pl-5">
-        <h1>
-          By knowing how to sort the order of patients by severity of injury,
-          that allows a institution to prioritize the highest risk patients
-          first. This allows the highest priority patients to get the urgent
-          care they need.
-        </h1>
-      </div>
-      <div class="right text-center text-5xl">
-        <h1>How is this helpful?</h1>
-      </div>
-    </div>
-    <div class="section bg-secondary py-3">
-      <div class="left text-center text-5xl">
-        <h1>Who is this for?</h1>
-      </div>
-      <div class="right text-2xl text-right pr-5">
-        <h1>
-          Institutions like hospitals, urgent care facilities, veterinarian
-          clinics, and others would be able to sort their incoming patients,
-          streamlining the process of patient intake and allowing for a more
-          efficient workplace.
-        </h1>
-      </div>
-    </div>
-    <div class="section bg-primary py-3">
-      <div class="left text-2xl text-left pl-5">
-        <h1>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-          tempor lacus. Nunc eget aliquam lectus. Nulla sit amet massa sed massa
-          sagittis varius nec ut erat. Aliquam volutpat felis.
-        </h1>
-      </div>
-      <div class="right text-center text-5xl">
-        <h1>Meet the Team!</h1>
-      </div>
-    </div>
+
+    <!-- Features section -->
     <div
-      class="section bg-secondary text-center text-5xl py-10"
-      style="display: grid"
+      class="section bg-secondary"
+      style="padding: 20px; display: flex; flex-direction: column"
     >
-      <h1>Check out a demo!</h1>
+      <h1 class="mt-10 text-center text-3xl text-black font-bold">
+        Why choose [BrandName]?
+      </h1>
+      <div class="card-holder">
+        <div class="card">
+          <img src="/static/media/fast.png" alt="Fast" />
+          <h1 class="text-center text-lg font-bold text-black">Fast</h1>
+          <h1 class="text-center text-base text-gray-400">
+            Optimized for performance, delivering results in seconds even with
+            large datasets.
+          </h1>
+        </div>
+        <div class="card">
+          <img src="/static/media/accurate.png" alt="Accurate" />
+          <h1 class="text-center text-lg font-bold text-black">Accurate</h1>
+          <h1 class="text-center text-base text-gray-400">
+            Designed with precision to ensure reliable and accurate outcomes
+            every time.
+          </h1>
+        </div>
+        <div class="card">
+          <img src="/static/media/easy.png" alt="Easy to Use" />
+          <h1 class="text-center text-lg font-bold text-black">Easy to Use</h1>
+          <h1 class="text-center text-base text-gray-400">
+            User-friendly interface and simple setup make it accessible to
+            everyone.
+          </h1>
+        </div>
+        <div class="card">
+          <img src="/static/media/code.png" alt="Open Source" />
+          <h1 class="text-center text-lg font-bold text-black">Open Source</h1>
+          <h1 class="text-center text-base text-gray-400">
+            Completely free and open-source, with active community support for
+            continuous improvements.
+          </h1>
+        </div>
+      </div>
     </div>
   </body>
 </html>
