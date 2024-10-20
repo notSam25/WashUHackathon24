@@ -59,9 +59,19 @@ document.addEventListener("DOMContentLoaded", function () {
   symptoms.forEach((value, key) => {
     const row = document.createElement("tr");
     const td = document.createElement("td");
+
     td.classList.add("symptom");
     td.innerText = key;
     td.id = "symptom-" + value;
+
+    row.addEventListener("click", () => {
+      if (row.parentElement == availableSymptomsTable) {
+        activeSymptomsTable.appendChild(row);
+      } else {
+        availableSymptomsTable.appendChild(row);
+      }
+    });
+
     row.appendChild(td);
     availableSymptomsTable.appendChild(row);
   });
