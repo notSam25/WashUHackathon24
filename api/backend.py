@@ -1,7 +1,11 @@
-from fastapi import FastAPI
+from http.server import BaseHTTPRequestHandler
 
-app = FastAPI()
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+class handler(BaseHTTPRequestHandler):
+
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-type", "text/plain")
+        self.end_headers()
+        self.wfile.write("Hello, world!".encode("utf-8"))
+        return
