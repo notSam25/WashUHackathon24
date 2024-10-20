@@ -1,3 +1,4 @@
 {
-    "redirects": [{ "source": "/", "destination": "/index.html" }]
+    "redirects": [{ "source": "/", "destination": "/index.html" }],
+    "rewrites": [{ "source": "/api/(.*)", "destination": "/api/index.py" }]
 }
