@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.11"
 pandas = "^2.2.3"
 imbalanced-learn = "^0.12.4"
+seaborn = "^0.13.2"
 
 
 [build-system]
