@@ -1,13 +1,228 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>My Static Site</title>
-    </head>
-    <body>
-        <h1>Welcome to My Static Site!</h1>
-        <p>This is a static HTML page.</p>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UrgencyFlow</title>
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <script src="/static/js/patient.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- Introduction section -->
+    <div class="section bg-primary">
+      <div class="left">
+        <div
+          class="background-image"
+          style="background-image: url('/static/media/pngegg.png')"
+        ></div>
+        <h1 class="text-4xl font-bold" style="margin-top: 15px">UrgencyFlow</h1>
+      </div>
+      <div class="right text-center" style="margin-top: 100px">
+        <h1 class="text-3xl font-bold">
+          Optimize Patient Care with AI-Driven Management
+        </h1>
+        <p class="text-base text-gray-400 mr-10" style="padding-top: 30px">
+          Harness the power of AI to seamlessly sort and prioritize patients by
+          triage, ensuring faster, smarter, and more effective healthcare.
+          Designed for a more efficient, patient-centered approach to medical
+          management.
+        </p>
+        <div style="padding-top: 30px">
+          <a href="#section-one">
+            <button class="button-primary text-lg">Learn More</button>
+          </a>
+          <a href="#section-four">
+            <button class="button-secondary text-lg bg-slate-600">
+              Try a Demo
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features section -->
+    <div
+      id="section-one"
+      class="section bg-secondary"
+      style="padding: 20px; display: flex; flex-direction: column"
+    >
+      <h1 class="mt-10 text-center text-3xl text-black font-bold">
+        Why choose UrgencyFlow?
+      </h1>
+      <div class="card-holder">
+        <div class="card">
+          <img src="/static/media/fast.png" alt="Fast" />
+          <h1 class="text-center text-lg font-bold text-black">Fast</h1>
+          <h1 class="text-center text-base text-gray-400">
+            Optimized for performance, delivering results in seconds even with
+            large datasets.
+          </h1>
+        </div>
+        <div class="card">
+          <img src="/static/media/accurate.png" alt="Accurate" />
+          <h1 class="text-center text-lg font-bold text-black">Accurate</h1>
+          <h1 class="text-center text-base text-gray-400">
+            Designed with precision to ensure reliable and accurate outcomes
+            every time.
+          </h1>
+        </div>
+        <div class="card">
+          <img src="/static/media/easy.png" alt="Easy to Use" />
+          <h1 class="text-center text-lg font-bold text-black">Easy to Use</h1>
+          <h1 class="text-center text-base text-gray-400">
+            User-friendly interface and simple setup make it accessible to
+            everyone.
+          </h1>
+        </div>
+        <div class="card">
+          <img src="/static/media/code.png" alt="Open Source" />
+          <h1 class="text-center text-lg font-bold text-black">Open Source</h1>
+          <h1 class="text-center text-base text-gray-400">
+            Completely free and open-source, with active community support for
+            continuous improvements.
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- How it works section -->
+    <div class="section bg-primary">
+      <div
+        class="left"
+        style="display: flex; justify-content: center; align-items: center"
+      >
+        <iframe
+          src="https://www.loom.com/embed/aa548c6416d84d8fb1aa1adfe2ed7b87?sid=a69ed3e0-7acc-4551-a920-1460cf618b4e"
+          frameborder="0"
+          webkitallowfullscreen
+          mozallowfullscreen
+          allowfullscreen
+          style="height: 80%; width: 80%"
+        ></iframe>
+      </div>
+      <div class="right">
+        <h1 class="text-3xl font-bold">How it works</h1>
+        <p class="text-base text-gray-400 text-center">
+          Using a 'sequential' AI model, we train a large dataset of existing
+          triage data. Our website then takes the user's input for<br />
+          patients and run's the model to get the urgency status. That's how we
+          can order patients by the severity <br />of their injuries and
+          streamline the hospital intake system.
+        </p>
+      </div>
+    </div>
+
+    <!-- Where can I find the code? section -->
+    <div class="section bg-secondary">
+      <div class="left">
+        <h1 class="text-3xl font-bold text-black">
+          Where can I find the code?
+        </h1>
+        <p class="text-base text-gray-400 ml-10 text-wrap">
+          We're so glad you're interested! Our code is publicly available on
+          GitHub under the MIT license. <br />That means you can contribute,
+          modify, or even sell it. Click the image to the right to go straight
+          to the repo!
+        </p>
+      </div>
+      <div
+        class="right"
+        style="display: flex; justify-content: center; align-items: center"
+      >
+        <a href="https://github.com/notSam25/WashUHackathon24">
+          <img
+            src="https://www.consilium.europa.eu/media/68602/visual.png"
+            alt="image was supposed to be here :sob:"
+          />
+        </a>
+      </div>
+    </div>
+
+    <!-- Demo Section -->
+    <div
+      id="section-four"
+      class="section bg-primary"
+      style="margin-bottom: 20px"
+    >
+      <div class="left">
+        <h1 class="text-3xl font-bold absolute top-10">View your patients!</h1>
+        <table class="styled-table absolute top-20">
+          <thead id="DemoTableHead">
+            <tr>
+              <th>Patient</th>
+              <th>Urgency</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody id="DemoTableBody">
+            <!-- Use JS here to insert data -->
+            <tr>
+              <td>Joe Biden</td>
+              <td>URGENT</td>
+              <td>
+                <button class="button-primary">View Details</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="right">
+        <h1 class="text-3xl font-bold">Add a patient</h1>
+        <div class="patient-panel">
+          <input type="text" placeholder="Patient Name" class="text-black" />
+          <select
+            id="gender"
+            name="gender"
+            style="width: 49%"
+            class="text-black"
+          >
+            <option value="Male" selected>Male</option>
+            <option value="Female">Female</option>
+          </select>
+          <input
+            placeholder="Enter age(1-110)"
+            type="number"
+            id="numberInput"
+            name="numberInput"
+            min="1"
+            max="110"
+            style="width: 50%; border-radius: 10px"
+            class="text-black"
+          />
+          <div class="symptom-selection">
+            <input
+              id="symptom-search-box"
+              type="text"
+              placeholder="Symptom Search Box"
+              class="text-black"
+            />
+            <div class="symptom-view">
+              <div class="symptom-table">
+                <p style="text-decoration-line: underline">
+                  Available Symptoms
+                </p>
+                <table>
+                  <tbody id="available-symptoms-table-body" >
+                  </table>
+                </table>
+              </div>
+              <div class="symptom-table">
+                <p style="text-decoration-line: underline">Active Symptoms</p>
+                <table>
+                  <tbody id="active-symptoms-table-body" />
+                </table>
+              </div>
+            </div>
+          </div>
+          <button
+            class="button-primary"
+            style="margin-top: 10px; height: 40px; width: 100%"
+          >
+            Add Patient
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

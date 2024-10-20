@@ -1,0 +1,244 @@
+:root {
+  --text: #e4eaf0;
+  --background: #1e1e1e;
+  --background-secondary: #dbdbdb;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Inter:700|Inter:400");
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter";
+  font-weight: 400;
+  background-color: white;
+  color: var(--text);
+  line-height: 1.75;
+  display: grid;
+  place-items: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Inter";
+  font-weight: 700;
+}
+
+html {
+  font-size: 100%;
+} /* 16px */
+
+h1 {
+  font-size: 4.21rem; /* 67.36px */
+}
+
+h2 {
+  font-size: 3.158rem; /* 50.56px */
+}
+
+h3 {
+  font-size: 2.369rem; /* 37.92px */
+}
+
+h4 {
+  font-size: 1.777rem; /* 28.48px */
+}
+
+h5 {
+  font-size: 1.333rem; /* 21.28px */
+}
+
+small {
+  font-size: 0.75rem; /* 12px */
+}
+
+.section {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  background-color: green;
+  width: 90%;
+  height: 550px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+  width: 50%;
+  height: 100%;
+  position: relative;
+}
+
+.background-image {
+  background-image: url("/static/media/pngegg.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 300px; /* Set height for the image container */
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 50%;
+}
+
+.bg-primary {
+  background-color: var(--background);
+}
+
+.bg-secondary {
+  background-color: var(--background-secondary);
+}
+
+.button-primary {
+  margin-right: 10px;
+  width: 120px;
+  height: 45px;
+  border: 2px solid white;
+  background-color: none;
+  border-radius: 8px;
+}
+
+.button-secondary {
+  margin-right: 10px;
+  width: 120px;
+  height: 45px;
+  border-radius: 8px;
+}
+
+.card-holder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  height: auto;
+  margin-top: 50px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 180px;
+  background-color: inherit;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-right: 0;
+}
+
+.card img {
+  height: 50px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .card-holder {
+    justify-content: center;
+  }
+
+  .card {
+    margin-top: -50px;
+    width: 45%;
+  }
+}
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid var(--background-secondary);
+}
+
+.styled-table tbody tr:hover,
+tr:active {
+  color: #009879;
+}
+
+.patient-panel {
+  width: 400px;
+  height: 420px;
+  overflow: hidden;
+}
+
+.patient-panel input {
+  text-align: center;
+  background-color: #dbdbdb;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.symptom-selection {
+  overflow: hidden;
+  border-radius: 10px;
+  width: 400px;
+  height: 200px;
+  background-color: #2e2e2e;
+  border: 1px solid #dbdbdb;
+  border-top: none;
+}
+
+.symptom-selection input {
+  text-align: center;
+  width: 100%;
+  height: 25px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.symptom-view {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.symptom-view .symptom-table {
+  border-right: 1px solid #dbdbdb;
+
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.symptom:hover {
+  color: #009879;
+}
