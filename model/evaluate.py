@@ -1,64 +1,113 @@
-import pandas as pd
 import torch
-from torch import nn
+import torch.nn as nn
+import pandas as pd
+import numpy as np
 from joblib import load
+from sklearn.preprocessing import StandardScaler
 
 
-# Neural Network Model
 class EsiModel(nn.Module):
     def __init__(self, input_size):
         super(EsiModel, self).__init__()
-        self.fc1 = nn.Linear(input_size, 256)
-        self.fc2 = nn.Linear(256, 128)
-        self.fc3 = nn.Linear(128, 64)
-        self.fc4 = nn.Linear(64, 5)  # 5 output classes for ESI 1-5
-        self.dropout = nn.Dropout(0.2)
+        self.fc1 = nn.Linear(input_size, 512)
+        self.bn1 = nn.BatchNorm1d(512)
+        self.fc2 = nn.Linear(512, 256)
+        self.bn2 = nn.BatchNorm1d(256)
+        self.fc3 = nn.Linear(256, 128)
+        self.bn3 = nn.BatchNorm1d(128)
+        self.fc4 = nn.Linear(128, 64)
+        self.bn4 = nn.BatchNorm1d(64)
+        self.fc5 = nn.Linear(64, 5)
+        self.dropout = nn.Dropout(0.3)
 
     def forward(self, x):
-        x = torch.relu(self.fc1(x))
-        x = self.dropout(x)
-        x = torch.relu(self.fc2(x))
-        x = self.dropout(x)
-        x = torch.relu(self.fc3(x))
-        x = self.fc4(x)
+        x = self.dropout(torch.relu(self.bn1(self.fc1(x))))
+        x = self.dropout(torch.relu(self.bn2(self.fc2(x))))
+        x = self.dropout(torch.relu(self.bn3(self.fc3(x))))
+        x = self.dropout(torch.relu(self.bn4(self.fc4(x))))
+        x = self.fc5(x)
         return x
 
 
-# Load the test data
-test_data = pd.read_csv("data/test/test.csv")
+def load_model():
+    model_state_dict = torch.load("esi_model.pth")
+    scaler = load("scaler.joblib")
+    feature_columns = load("feature_columns.joblib")
 
-# Ensure the test data has the same columns as the training data (excluding 'esi')
-# You may need to adjust this based on your actual data
-if "esi" in test_data.columns:
-    test_data = test_data.drop(columns=["esi"])
+    model = EsiModel(len(feature_columns))
+    model.load_state_dict(model_state_dict)
+    model.eval()
 
-# Load the scaler
-scaler = load("scaler.joblib")
+    return model, scaler, feature_columns
 
-# Preprocess the test data
-test_data_scaled = scaler.transform(test_data)
 
-# Load model
-input_size = test_data.shape[1]
-model = EsiModel(input_size)
-model.load_state_dict(torch.load("esi_model.pth"))
-model.eval()
+def create_features(df):
+    # Feature engineering logic matching the training script
+    if "age" in df.columns:
+        df["age_group"] = pd.cut(
+            df["age"], bins=[0, 18, 30, 50, 70, 100], labels=[0, 1, 2, 3, 4]
+        )
 
-# Convert to PyTorch tensor
-test_tensor = torch.FloatTensor(test_data_scaled)
+    # Additional feature engineering based on available columns
+    return df
 
-# Make predictions
-with torch.no_grad():
-    output = model(test_tensor)
-    predicted_classes = torch.argmax(output, dim=1).numpy()
 
-# Add 1 to predictions to match original ESI scale (1-5)
-predicted_esi = predicted_classes + 1
+def preprocess_data(df, scaler, feature_columns):
+    df = create_features(df)
+    df = pd.get_dummies(df, drop_first=True)
 
-# Add predictions to the test data
-test_data["Predicted_ESI"] = predicted_esi
+    # Ensure all columns from training are present
+    for col in feature_columns:
+        if col not in df.columns:
+            df[col] = 0
 
-# Save results
-test_data.to_csv("test_results.csv", index=False)
+    # Reorder columns to match training data
+    df = df[feature_columns]
 
-print("Predictions complete. Results saved to 'test_results.csv'.")
+    # Scale the input data
+    scaled_input = scaler.transform(df)
+
+    return scaled_input
+
+
+def predict_esi(model, input_tensor):
+    with torch.no_grad():
+        output = model(input_tensor)
+        probabilities = torch.softmax(output, dim=1)
+        predicted_class = torch.argmax(probabilities, dim=1)
+
+    # Convert to ESI score (1-indexed)
+    esi_scores = predicted_class.numpy() + 1
+    return esi_scores, probabilities.numpy()
+
+
+def predict_from_dataframe(input_data):
+    # Load model, scaler, and feature columns
+    model, scaler, feature_columns = load_model()
+
+    # Preprocess the input data
+    scaled_input = preprocess_data(input_data, scaler, feature_columns)
+
+    # Convert to PyTorch tensor
+    input_tensor = torch.tensor(scaled_input, dtype=torch.float32)
+
+    # Make predictions
+    esi_scores, probabilities = predict_esi(model, input_tensor)
+
+    # Return the predictions and probabilities
+    return esi_scores, probabilities
+
+
+# Example usage
+if __name__ == "__main__":
+    input_csv_path = "data/test/test.csv"  # Replace this with your input CSV path
+    input_data = pd.read_csv(input_csv_path)
+
+    # Get ESI predictions and probabilities
+    esi_scores, probabilities = predict_from_dataframe(input_data)
+
+    # Print the predictions
+    for i, score in enumerate(esi_scores):
+        print(
+            f"Sample {i + 1}: Predicted ESI = {score}, Probabilities = {probabilities[i]}"
+        )
