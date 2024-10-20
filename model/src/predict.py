@@ -30,9 +30,9 @@ class EsiModel(nn.Module):
 
 
 def load_model():
-    model_state_dict = torch.load("esi_model.pth")
-    scaler = load("scaler.joblib")
-    feature_columns = load("feature_columns.joblib")
+    model_state_dict = torch.load("model/saved_models/esi_model.pth")
+    scaler = load("model/saved_models/scaler.joblib")
+    feature_columns = load("model/saved_models/feature_columns.joblib")
 
     model = EsiModel(len(feature_columns))
     model.load_state_dict(model_state_dict)
@@ -98,8 +98,7 @@ def predict_from_dataframe(input_data):
     return esi_scores, probabilities
 
 
-# Example usage
-if __name__ == "__main__":
+def predict():
     input_csv_path = "data/test/test.csv"  # Replace this with your input CSV path
     input_data = pd.read_csv(input_csv_path)
 
