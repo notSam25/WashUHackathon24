@@ -1074,7 +1074,18 @@ document.addEventListener("DOMContentLoaded", function () {
   vitalsSelectValue.addEventListener("change", function () {
     switch (vitalsSelectValue.value) {
       case "patient-vitals-1":
-        const optionMap = {
+        const optionMap1 = {
+          triage_vital_hr: 63.0,
+          triage_vital_rr: 18.0,
+          triage_vital_sbp: 146.0,
+          triage_vital_dbp: 85.0,
+          triage_vital_o2: 97.0,
+          triage_vital_temp: 97.0,
+        };
+        csvData = getCSVFromOptions(optionMap1);
+        break;
+      case "patient-vitals-2":
+        const optionMap2 = {
           triage_vital_hr: 78.0,
           triage_vital_rr: 16.0,
           triage_vital_sbp: 134.0,
@@ -1082,9 +1093,7 @@ document.addEventListener("DOMContentLoaded", function () {
           triage_vital_o2: 97.0,
           triage_vital_temp: 97.8,
         };
-        csvData = getCSVFromOptions(optionMap);
-        break;
-      case "patient-vitals-2":
+        csvData = getCSVFromOptions(optionMap2);
         break;
       default: {
         break;
@@ -1167,14 +1176,83 @@ document.addEventListener("DOMContentLoaded", function () {
 
       console.log("Updated ED Data:", updatedEdData);
       console.log(updatedEdData.length);
-      // Here you would typically send this data to your backend
-      // For example:
-      // submitPatientData(updatedEdData);
 
-      alert("Patient data submitted successfully!");
-      alert(await requestESIPrediction(updatedEdData));
+      const demoTableElement = document.getElementById("DemoTableBody");
+      const tr = document.createElement("tr");
+      const td_name = document.createElement("td");
+      td_name.innerText = patientName;
+      const td_ESI = document.createElement("td");
+      const edData = await requestESIPrediction(updatedEdData);
+      td_ESI.innerText = edData;
+      const td_details = document.createElement("td");
+      const button_details = document.createElement("button");
+      button_details.classList.add("button-primary");
+      button_details.innerText = "View Details";
+      button_details.addEventListener("click", () => {
+        // Create a new div for the popup
+        const popup = document.createElement("div");
+        popup.id = "popupOverlay";
 
-      csvData = null;
+        // Style the popup to cover the whole screen and center the content
+        popup.style.position = "fixed";
+        popup.style.top = "0";
+        popup.style.left = "0";
+        popup.style.width = "100vw";
+        popup.style.height = "100vh";
+        popup.style.backgroundColor = "rgba(0, 0, 0, 0.8)"; // Semi-transparent black
+        popup.style.display = "flex";
+        popup.style.justifyContent = "center";
+        popup.style.alignItems = "center";
+        popup.style.zIndex = "1000"; // Ensure it's on top of all content
+
+        // Create content for the popup (e.g., text or button)
+        const popupContent = document.createElement("div");
+        popupContent.style.backgroundColor = "#1e1e1e";
+        popupContent.style.padding = "20px";
+        popupContent.style.borderRadius = "8px";
+        popupContent.style.width = "80%"; // Adjust width to ensure it is large enough
+        popupContent.style.maxHeight = "80vh"; // Limit height to 80% of the viewport height
+        popupContent.style.overflowY = "auto"; // Enable vertical scrolling if content overflows
+
+        // Add the content, including patient details and symptom data
+        popupContent.innerHTML = `
+          <h2 class="font-bold text-xl" style="color: #e4eaf0;">${patientName}'s details</h2>
+          <p class="text-gray-400">Urgency: ${edData}</p>
+        `;
+
+        // Add the updatedEdData values that are not 0
+        Object.entries(updatedEdData).forEach(([key, value]) => {
+          if (value !== 0) {
+            const p = document.createElement("p");
+            p.classList.add("text-gray-400");
+            p.textContent = `${key}: ${value}`; // Create <p> element with the key and value
+            popupContent.appendChild(p); // Append the <p> element to the popup content
+          }
+        });
+
+        const button = document.createElement("button");
+        button.classList.add("button-primary");
+        button.id = "closePopup";
+        button.innerText = "Close Details";
+        popupContent.appendChild(button);
+
+        popup.appendChild(popupContent);
+
+        // Append popup to the body
+        document.body.appendChild(popup);
+
+        // Add event listener to close the popup
+        document.getElementById("closePopup").addEventListener("click", () => {
+          popup.remove(); // Remove the popup when close button is clicked
+        });
+      });
+
+      td_details.appendChild(button_details);
+
+      tr.appendChild(td_name);
+      tr.appendChild(td_ESI);
+      tr.appendChild(td_details);
+      demoTableElement.appendChild(tr);
 
       csvUploadButton.textContent = "Upload CSV";
       document.getElementById("numberInput").value = "";
@@ -1201,6 +1279,7 @@ document.addEventListener("DOMContentLoaded", function () {
         symptoms[symptomName] = 1;
       }
     }
+    console.log("[][]: " + symptoms);
 
     return symptoms;
   }
