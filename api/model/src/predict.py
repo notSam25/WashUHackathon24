@@ -30,9 +30,11 @@ class EsiModel(nn.Module):
 
 
 def load_model():
-    model_state_dict = torch.load("model/saved_models/esi_model.pth", weights_only=True)
-    scaler = load("model/saved_models/scaler.joblib")
-    feature_columns = load("model/saved_models/feature_columns.joblib")
+    model_state_dict = torch.load(
+        "api/model/saved_models/esi_model.pth", weights_only=True
+    )
+    scaler = load("api/model/saved_models/scaler.joblib")
+    feature_columns = load("api/model/saved_models/feature_columns.joblib")
 
     model = EsiModel(len(feature_columns))
     model.load_state_dict(model_state_dict)
