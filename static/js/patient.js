@@ -1214,3 +1214,28 @@ document.addEventListener("DOMContentLoaded", function () {
         return updatedEdData;
     }
 });
+
+async function requestESIPrediction(patientData) {
+    const apiUrl = "http://127.0.0.1:8000/api/model/predict/"; // Replace with your actual API endpoint
+
+    try {
+        const response = await fetch(apiUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(patientData),
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log("ESI Prediction:", result.esi_scores[0]);
+        return result.esi_scores[0];
+    } catch (error) {
+        console.error("Error requesting ESI prediction:", error);
+        throw error;
+    }
+}
