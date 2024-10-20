@@ -3,23 +3,23 @@ const symptoms = new Map([
   ["BackTrauma", 2],
 ]);
 
-function handleSearchBox(event) {
+function handleSearchBox() {
   const symptomSearchBox = document.getElementById("symptom-search-box");
   if (!symptomSearchBox) {
     throw new Error("Failed to find element(3)");
   }
 
-  const availableSymptoms = document.getElementById(
-    "available-symptoms-table-body"
-  );
-  if (!availableSymptoms) {
-    throw new Error("Failed to find available symptoms table body");
-  }
-
-  const rows = availableSymptoms.querySelectorAll("tr"); // Get all <tr> elements within the available symptoms
+  const rows = document.querySelectorAll("tr");
   const searchTerm = symptomSearchBox.value.toLowerCase(); // Get the search term
 
   rows.forEach((row) => {
+    if (
+      row.parentElement.id === "DemoTableHead" ||
+      row.parentElement.id === "DemoTableBody"
+    ) {
+      return;
+    }
+
     const cells = row.children;
 
     let matchFound = false;
