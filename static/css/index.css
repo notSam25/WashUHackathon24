@@ -221,6 +221,10 @@ tr:active {
   height: 100%;
 }
 
+.symptom-view .flex-col {
+  min-width: 0;
+}
+
 .symptom-view .symptom-table {
   display: flex;
   flex: 1;
