@@ -6,6 +6,10 @@
 
 @import url("https://fonts.googleapis.com/css?family=Inter:700|Inter:400");
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Inter";
   font-weight: 400;
