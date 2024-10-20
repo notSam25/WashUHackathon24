@@ -149,7 +149,7 @@
       <div class="left flex-1 flex flex-col gap-4 items-stretch">
         <h1 class="text-3xl font-bold flex-1 text-center">Add a patient</h1>
         <div class="patient-panel flex-1 flex flex-col gap-2 items-stretch">
-          <input type="text" placeholder="Patient Name" class="text-black p-2 flex-1" />
+          <input id="patient-name" type="text" placeholder="Patient Name" class="text-black p-2 flex-1" />
           <div class="flex gap-2 flex-1">
             <select
             id="gender"
@@ -170,7 +170,7 @@
               style="border-radius: 10px"
               class="text-black flex-1 p-2"
             />
-            <button class="flex-1 bg-white p-2" style="border-radius: 10px; background-color: #dbdbdb; color:#9ca3af">Upload Vitals</button>
+            <button id="vitals" class="flex-1 bg-white p-2" style="border-radius: 10px; background-color: #dbdbdb; color:#9ca3af">Upload Vitals</button>
           </div>
           
           <div class="symptom-selection flex flex-col gap-2 p-2 flex-1">
@@ -204,7 +204,7 @@
             </div>
           </div>
           <div class="flex-1">
-            <button
+            <button id="add-patient"
             class="button-primary p-2"
             style="width: 100%;"
             >
