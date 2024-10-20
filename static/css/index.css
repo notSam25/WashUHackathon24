@@ -64,7 +64,6 @@ small {
   margin-top: 10px;
   background-color: green;
   width: 90%;
-  height: 550px;
 }
 
 .left {
@@ -106,7 +105,6 @@ small {
 }
 
 .button-primary {
-  margin-right: 10px;
   width: 120px;
   height: 45px;
   border: 2px solid white;
@@ -126,19 +124,20 @@ small {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 16px;
   height: auto;
-  margin-top: 50px;
 }
 
 .card {
   display: flex;
   flex-direction: column;
+  gap: 8px;
   width: 250px;
-  height: 180px;
+  height: 250px;
   background-color: inherit;
+  border: 2px solid black;
+  padding: 24px;
   border-radius: 10px;
-  overflow: hidden;
   margin-right: 0;
 }
 
@@ -154,7 +153,6 @@ small {
   }
 
   .card {
-    margin-top: -50px;
     width: 45%;
   }
 }
@@ -164,7 +162,6 @@ small {
   margin: 25px 0;
   font-size: 0.9em;
   font-family: sans-serif;
-  min-width: 400px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -193,9 +190,8 @@ tr:active {
 }
 
 .patient-panel {
-  width: 400px;
-  height: 420px;
   overflow: hidden;
+  width: 100%;
 }
 
 .patient-panel input {
@@ -203,17 +199,13 @@ tr:active {
   background-color: #dbdbdb;
   width: 100%;
   border-radius: 10px;
-  margin-bottom: 10px;
 }
 
 .symptom-selection {
   overflow: hidden;
   border-radius: 10px;
-  width: 400px;
-  height: 200px;
   background-color: #2e2e2e;
-  border: 1px solid #dbdbdb;
-  border-top: none;
+  border: 2px solid #dbdbdb;
 }
 
 .symptom-selection input {
@@ -229,14 +221,18 @@ tr:active {
   height: 100%;
 }
 
-.symptom-view .symptom-table {
-  border-right: 1px solid #dbdbdb;
+.symptom-view .flex-col {
+  min-width: 0;
+}
 
-  width: 50%;
-  height: 100%;
+.symptom-view .symptom-table {
   display: flex;
+  flex: 1;
+  text-align: center;
   flex-direction: column;
   align-items: center;
+  min-height: 300px;
+  max-height: 300px;
 }
 
 .symptom:hover {

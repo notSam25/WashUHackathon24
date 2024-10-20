@@ -4,35 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UrgencyFlow</title>
+    <link rel="icon" href="/images/pngegg.png">
     <link rel="stylesheet" href="/static/css/index.css" />
     <script src="/static/js/patient.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
+  <body class="flex flex-col gap-4">
     <!-- Introduction section -->
-    <div class="section bg-primary">
-      <div class="left">
+    <div class="section bg-primary flex p-8 items-center gap-8">
+      <div class="left flex-1 flex flex-col gap-8">
         <div
           class="background-image"
-          style="background-image: url('/static/media/pngegg.png')"
+          style="background-image: url('output-onlinepngtools.png')"
         ></div>
         <h1 class="text-4xl font-bold" style="margin-top: 15px">UrgencyFlow</h1>
       </div>
-      <div class="right text-center" style="margin-top: 100px">
+      <div class="right text-center flex-1 flex flex-col gap-6">
         <h1 class="text-3xl font-bold">
           Optimize Patient Care with AI-Driven Management
         </h1>
-        <p class="text-base text-gray-400 mr-10" style="padding-top: 30px">
+        <p class="text-base text-gray-400 mr-10">
           Harness the power of AI to seamlessly sort and prioritize patients by
           triage, ensuring faster, smarter, and more effective healthcare.
           Designed for a more efficient, patient-centered approach to medical
           management.
         </p>
-        <div style="padding-top: 30px">
-          <a href="#section-one">
+        <div class="flex gap-4">
+          <a href="#section-one" class="flex-1">
             <button class="button-primary text-lg">Learn More</button>
           </a>
-          <a href="#section-four">
+          <a href="#section-four" class="flex-1">
             <button class="button-secondary text-lg bg-slate-600">
               Try a Demo
             </button>
@@ -44,13 +45,13 @@
     <!-- Features section -->
     <div
       id="section-one"
-      class="section bg-secondary"
-      style="padding: 20px; display: flex; flex-direction: column"
+      class="section bg-secondary gap-8 p-8"
+      style="display: flex; flex-direction: column;"
     >
-      <h1 class="mt-10 text-center text-3xl text-black font-bold">
+      <h1 class="text-center text-3xl text-black font-bold flex flex-1 items-center justify-center">
         Why choose UrgencyFlow?
       </h1>
-      <div class="card-holder">
+      <div class="card-holder flex flex-[5_5_0%]">
         <div class="card">
           <img src="/static/media/fast.png" alt="Fast" />
           <h1 class="text-center text-lg font-bold text-black">Fast</h1>
@@ -87,10 +88,10 @@
     </div>
 
     <!-- How it works section -->
-    <div class="section bg-primary">
+    <div class="section bg-primary flex p-8 gap-8 items-center">
       <div
         class="left"
-        style="display: flex; justify-content: center; align-items: center"
+        style="flex: 1; min-height: 350px;"
       >
         <iframe
           src="https://www.loom.com/embed/aa548c6416d84d8fb1aa1adfe2ed7b87?sid=a69ed3e0-7acc-4551-a920-1460cf618b4e"
@@ -98,28 +99,28 @@
           webkitallowfullscreen
           mozallowfullscreen
           allowfullscreen
-          style="height: 80%; width: 80%"
+          style="width: 100%; height: auto; flex: 1"
         ></iframe>
       </div>
-      <div class="right">
+      <div class="right flex flex-col gap-6 items-center justify-center">
         <h1 class="text-3xl font-bold">How it works</h1>
         <p class="text-base text-gray-400 text-center">
           Using a 'sequential' AI model, we train a large dataset of existing
-          triage data. Our website then takes the user's input for<br />
-          patients and run's the model to get the urgency status. That's how we
-          can order patients by the severity <br />of their injuries and
+          triage data. Our website then takes the user's input for
+          patients and runs the model to get the urgency status. That's how we
+          can order patients by the severity of their injuries and
           streamline the hospital intake system.
         </p>
       </div>
     </div>
 
     <!-- Where can I find the code? section -->
-    <div class="section bg-secondary">
-      <div class="left">
-        <h1 class="text-3xl font-bold text-black">
+    <div class="section bg-secondary flex gap-16 p-16 items-center">
+      <div class="left flex flex-col gap-8 flex-1">
+        <h1 class="text-3xl font-bold text-black text-center">
           Where can I find the code?
         </h1>
-        <p class="text-base text-gray-400 ml-10 text-wrap">
+        <p class="text-base text-gray-400 text-wrap text-center">
           We're so glad you're interested! Our code is publicly available on
           GitHub under the MIT license. <br />That means you can contribute,
           modify, or even sell it. Click the image to the right to go straight
@@ -127,13 +128,14 @@
         </p>
       </div>
       <div
-        class="right"
+        class="right flex-1"
         style="display: flex; justify-content: center; align-items: center"
       >
-        <a href="https://github.com/notSam25/WashUHackathon24">
+        <a href="https://github.com/notSam25/WashUHackathon24" style="width: 100%;">
           <img
             src="https://www.consilium.europa.eu/media/68602/visual.png"
             alt="image was supposed to be here :sob:"
+            style="width: 100%;"
           />
         </a>
       </div>
@@ -142,12 +144,100 @@
     <!-- Demo Section -->
     <div
       id="section-four"
-      class="section bg-primary"
+      class="section bg-primary flex gap-8 p-8 items-stretch"
       style="margin-bottom: 20px"
     >
-      <div class="left">
-        <h1 class="text-3xl font-bold absolute top-10">View your patients!</h1>
-        <table class="styled-table absolute top-20">
+      <div class="left flex-1 flex flex-col gap-4 items-stretch">
+        <h1 class="text-3xl font-bold flex-1 text-center">Add a patient</h1>
+        <div class="patient-panel flex-1 flex flex-col p-2 gap-2 items-stretch">
+          <input id="patient-name" type="text" placeholder="Patient Name" class="text-black p-2 flex-1" />
+          <div class="flex gap-2 flex-1">
+            <select
+              id="gender"
+              name="gender"
+              class="text-black p-2 text-center flex-1 min-w-0"
+              style="border-radius: 10px;"
+            >
+              <option value="Male" selected>Male</option>
+              <option value="Female">Female</option>
+            </select>
+          
+            <input
+              placeholder="Age (1-110)"
+              type="number"
+              id="numberInput"
+              name="numberInput"
+              min="1"
+              max="110"
+              style="border-radius: 10px"
+              class="text-black flex-1 p-2 min-w-0"
+            />
+          
+            <select
+              id="vitalsSelect"
+              name="vitalsSelect"
+              class="text-black p-2 text-center flex-flex-[2_2_0%] min-w-0"
+              style="border-radius: 10px; background-color: #dbdbdb; color:#9ca3af"
+            >
+              <option value="" disabled selected>Select or Upload Vitals</option>
+              <option value="upload">Upload Vitals From File</option>
+              <option value="patient-vitals-1">Example Patient Vitals 1</option>
+              <option value="patient-vitals-2">Example Patient Vitals 2</option>
+            </select>
+          
+            <button
+              id="uploadButton"
+              class="flex-[2_2_0%] bg-white p-2 min-w-0"
+              style="border-radius: 10px; background-color: #dbdbdb; color:#9ca3af"
+            >
+              Upload Vitals
+            </button>
+          </div>
+          
+          
+          <div class="symptom-selection flex flex-col gap-2 p-2 flex-1">
+            <input
+              id="symptom-search-box"
+              type="text"
+              placeholder="Search"
+              class="text-black p-2"
+            />
+            <div class="symptom-view flex-[10_10_0%]">
+              <div class="flex flex-col flex-1">
+                <p class="text-center" style="text-decoration-line: underline">
+                  Available Symptoms
+                </p>
+                <div class="symptom-table" style="overflow-y: auto;">
+                  <table>
+                    <tbody id="available-symptoms-table-body" >
+                    </table>
+                  </table>
+                </div>
+              </div>
+              <div class="bg-white" style="width: 2px;"></div>
+              <div class="flex flex-col flex-1">
+                <p class="text-center" style="text-decoration-line: underline">Symptoms Present</p>
+                <div class="symptom-table" style="overflow-y: auto;">
+                  <table>
+                    <tbody id="active-symptoms-table-body">
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1">
+            <button id="add-patient"
+            class="button-primary p-2"
+            style="width: 100%;"
+            >
+              Add Patient
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="right flex-1 flex flex-col items-stretch">
+        <h1 class="text-3xl font-bold text-center">View your patients!</h1>
+        <table class="styled-table flex-1">
           <thead id="DemoTableHead">
             <tr>
               <th>Patient</th>
@@ -155,73 +245,8 @@
               <th>Details</th>
             </tr>
           </thead>
-          <tbody id="DemoTableBody">
-            <!-- Use JS here to insert data -->
-            <tr>
-              <td>Joe Biden</td>
-              <td>URGENT</td>
-              <td>
-                <button class="button-primary">View Details</button>
-              </td>
-            </tr>
-          </tbody>
+          <tbody id="DemoTableBody" />
         </table>
-      </div>
-      <div class="right">
-        <h1 class="text-3xl font-bold">Add a patient</h1>
-        <div class="patient-panel">
-          <input type="text" placeholder="Patient Name" class="text-black" />
-          <select
-            id="gender"
-            name="gender"
-            style="width: 49%"
-            class="text-black"
-          >
-            <option value="Male" selected>Male</option>
-            <option value="Female">Female</option>
-          </select>
-          <input
-            placeholder="Enter age(1-110)"
-            type="number"
-            id="numberInput"
-            name="numberInput"
-            min="1"
-            max="110"
-            style="width: 50%; border-radius: 10px"
-            class="text-black"
-          />
-          <div class="symptom-selection">
-            <input
-              id="symptom-search-box"
-              type="text"
-              placeholder="Symptom Search Box"
-              class="text-black"
-            />
-            <div class="symptom-view">
-              <div class="symptom-table">
-                <p style="text-decoration-line: underline">
-                  Available Symptoms
-                </p>
-                <table>
-                  <tbody id="available-symptoms-table-body" >
-                  </table>
-                </table>
-              </div>
-              <div class="symptom-table">
-                <p style="text-decoration-line: underline">Active Symptoms</p>
-                <table>
-                  <tbody id="active-symptoms-table-body" />
-                </table>
-              </div>
-            </div>
-          </div>
-          <button
-            class="button-primary"
-            style="margin-top: 10px; height: 40px; width: 100%"
-          >
-            Add Patient
-          </button>
-        </div>
       </div>
     </div>
   </body>
