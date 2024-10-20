@@ -17,7 +17,12 @@
   <a href="#license">License</a>
 </p>
 
+
+
 ![screenshot](static/media/website_preview.png)
+<p align="center">
+  <a href="https://www.loom.com/share/4cc19a458dea4a7fa733a0f4b6aed368">Loom Explanation Video</a>
+</p>
 
 ## Key Features
 
