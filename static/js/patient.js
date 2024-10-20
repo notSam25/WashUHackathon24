@@ -1072,8 +1072,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             csvData[headers[i].trim()] = values[i].trim();
                         }
                         console.log("CSV Data loaded:", csvData);
-                        csvUploadButton.textContent = "CSV Uploaded";
-                        csvUploadButton.disabled = true;
+                        csvUploadButton.textContent = file.name;
+                        //csvUploadButton.disabled = true;
                     } else {
                         console.log("The CSV file is empty.");
                         alert("The CSV file is empty. Please upload a valid file.");
@@ -1130,12 +1130,20 @@ document.addEventListener("DOMContentLoaded", function () {
             // For example:
             // submitPatientData(updatedEdData);
 
-            alert("Patient data submitted successfully!");
+  
 
             alert("Patient data submitted successfully!");
 
             csvData = null;
+            
             csvUploadButton.textContent = "Upload CSV";
+            document.getElementById("numberInput").value = "Age (1-110)";
+            // Set the value of the input field
+            document.getElementById("patient-name").value = "Patient Name";
+
+            // Set the class of the input field
+            document.getElementById("patient-name").className = "text-gray-500 p-2 flex-1";
+
             csvUploadButton.disabled = false;
             clearSymptomsTable();
         });
