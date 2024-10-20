@@ -1043,17 +1043,51 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+function getCSVFromOptions(optionMap) {
+    // Convert the map of options into CSV format
+    const headers = Object.keys(optionMap).join(","); // Create the header row
+    const values = Object.values(optionMap).join(","); // Create the value row
+
+    // Combine the headers and values into CSV string
+    const csvData = `${headers}\n${values}`;
+
+    return csvData;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     let csvData = null;
 
-    const csvUploadButton = document.getElementById("vitals");
+    const vitalsSelectValue = document.getElementById("vitalsSelect");
+    const csvUploadButton = document.getElementById("uploadButton");
     const addPatientButton = document.getElementById("add-patient");
     const fileInput = document.createElement("input");
     fileInput.type = "file";
     fileInput.accept = ".csv";
 
+    vitalsSelectValue.addEventListener("change", function () {
+        switch (vitalsSelectValue.value) {
+            case "patient-vitals-1":
+                const optionMap = {
+                    triage_vital_hr: 78.0,
+                    triage_vital_rr: 16.0,
+                    triage_vital_sbp: 134.0,
+                    triage_vital_dbp: 78.0,
+                    triage_vital_o2: 97.0,
+                    triage_vital_temp: 97.8,
+                };
+                csvData = getCSVFromOptions(optionMap);
+                break;
+            case "patient-vitals-2":
+                break;
+            default: {
+                break;
+            }
+        }
+    });
+
     if (csvUploadButton) {
         csvUploadButton.addEventListener("click", function () {
+            vitalsSelectValue.value = "upload";
             fileInput.click();
         });
 
@@ -1072,8 +1106,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             csvData[headers[i].trim()] = values[i].trim();
                         }
                         console.log("CSV Data loaded:", csvData);
-                        csvUploadButton.textContent = "CSV Uploaded";
-                        csvUploadButton.disabled = true;
+                        csvUploadButton.textContent = file.name;
+                        //csvUploadButton.disabled = true;
                     } else {
                         console.log("The CSV file is empty.");
                         alert("The CSV file is empty. Please upload a valid file.");
@@ -1087,7 +1121,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (addPatientButton) {
-        addPatientButton.addEventListener("click", function () {
+        addPatientButton.addEventListener("click", async function () {
             const age = document.getElementById("numberInput").value;
             const patientName = document.getElementById("patient-name").value;
             const gender = document.getElementById("gender").value;
@@ -1124,11 +1158,22 @@ document.addEventListener("DOMContentLoaded", function () {
             // Transfer data to edDataKeys
             const updatedEdData = transferToEdDataKeys(combinedData);
 
-            // console.log("Combined Data:", updatedEdData);
-            console.log(requestESIPrediction(updatedEdData));
+            console.log("Updated ED Data:", updatedEdData);
+            console.log(updatedEdData.length);
+            // Here you would typically send this data to your backend
+            // For example:
+            // submitPatientData(updatedEdData);
+
+            alert("Patient data submitted successfully!");
+            alert(await requestESIPrediction(updatedEdData));
 
             csvData = null;
+
             csvUploadButton.textContent = "Upload CSV";
+            document.getElementById("numberInput").value = "";
+            // Set the value of the input field
+            document.getElementById("patient-name").value = "";
+
             csvUploadButton.disabled = false;
             clearSymptomsTable();
         });
@@ -1169,28 +1214,3 @@ document.addEventListener("DOMContentLoaded", function () {
         return updatedEdData;
     }
 });
-
-async function requestESIPrediction(patientData) {
-    const apiUrl = "http://127.0.0.1:8000/api/model/predict/"; // Replace with your actual API endpoint
-
-    try {
-        const response = await fetch(apiUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(patientData),
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const result = await response.json();
-        console.log("ESI Prediction:", result.esi_scores[0]);
-        return result.esi_scores[0];
-    } catch (error) {
-        console.error("Error requesting ESI prediction:", error);
-        throw error;
-    }
-}
