@@ -17,7 +17,7 @@
   <a href="#license">License</a>
 </p>
 
-![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.gif)
+![screenshot](static/media/website_preview.png)
 
 ## Key Features
 
@@ -25,21 +25,15 @@
   - Instantly view what patients must be admitted first, possibly saving their lives.
 * Add Entries
   - Patient is able to be added to the queue with few inputs needed.
-* View and Edit Patient information  
-* Admit Patients
-* Dequeue Patients
+* View Patient information  
 
 ## How To Use
 
-To run this application, you'll need to visit the website: https://wash-u-hackathon24.vercel.app/index.html
-
-## Website
-
-You can [visit](https://wash-u-hackathon24.vercel.app/index.html) the latest version of UrgencyFlow across all platforms.
+To see this project in action, view our latest deployments!
 
 ## Emailware
 
-UrgencyFlow is an [emailware](https://en.wiktionary.org/wiki/emailware). Meaning, if you liked using this app or it has helped you in any way, I'd like you send me an email at <n.j.wolk@wustl.edu> about anything you'd want to say about this software. I'd really appreciate it!
+UrgencyFlow is an [emailware](https://en.wiktionary.org/wiki/emailware). Meaning, if you liked using this app or it has helped you in any way, I'd like you send me an email at <swiseman2005s+UrgencyFlow@gmail.com> about anything you'd want to say about this software. I'd really appreciate it!
 
 ## Credits
 
@@ -50,6 +44,7 @@ This software uses the following open source packages:
 - [Numpy]
 - [Scikit-learn]
 - [Django]
+- Vântu, A., Vasilescu, A., & Băicoianu, A. (2023). Medical Emergency Department Triage Data Processing using a machine-learning solution. Heliyon, 9(8). https://doi.org/10.1016/j.heliyon.2023.e18402 
 
 ## License
 
