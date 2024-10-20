@@ -154,3 +154,87 @@ small {
     width: 45%;
   }
 }
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid var(--background-secondary);
+}
+
+.styled-table tbody tr:hover,
+tr:active {
+  color: #009879;
+}
+
+.patient-panel {
+  width: 400px;
+  height: 420px;
+  overflow: hidden;
+}
+
+.patient-panel input {
+  text-align: center;
+  background-color: #dbdbdb;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.symptom-selection {
+  overflow: hidden;
+  border-radius: 10px;
+  width: 400px;
+  height: 200px;
+  background-color: #2e2e2e;
+  border: 1px solid #dbdbdb;
+  border-top: none;
+}
+
+.symptom-selection input {
+  text-align: center;
+  width: 100%;
+  height: 25px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.symptom-view {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.symptom-view .symptom-table {
+  border-right: 1px solid #dbdbdb;
+
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.symptom:hover {
+  color: #009879;
+}
