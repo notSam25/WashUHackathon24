@@ -6,7 +6,7 @@ const symptoms = new Map([
 function handleSearchBox() {
   const symptomSearchBox = document.getElementById("symptom-search-box");
   if (!symptomSearchBox) {
-    throw new Error("Failed to find element(3)");
+    throw new Error("Failed to find element(1)");
   }
 
   const rows = document.querySelectorAll("tr");
