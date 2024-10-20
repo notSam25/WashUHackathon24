@@ -1,32 +1,39 @@
-async function sendVitalsData(csvFile, age, gender, arrivalmode, dispo, symptomsList) {
+async function sendVitalsData(csvFileInput, age, gender, arrivalmode, dispo, symptomsList) {
     // Initialize FormData to send CSV and other fields
     const formData = new FormData();
-    // formData.append("file", csvFile); // CSV file to send
-    // formData.append("age", age); // Add age to formData
-    // formData.append("gender", gender);
-    // formData.append("dispo", dispo); // Add disposition to formData
-    // formData.append("symptoms", JSON.stringify(symptomsList)); // Send symptoms list as a JSON string
 
-    // Initialize edDataKeys with age and previous disposition
+    // Append the CSV file
+    const csvFile = csvFileInput.files[0]; // Get the file from the input
+    if (!csvFile) {
+        console.error("No file selected.");
+        return;
+    }
+    formData.append("file", csvFile); // Append the CSV file
+
+    // Append other form data
+    formData.append("age", age);
+    formData.append("gender", gender);
+    formData.append("arrivalmode", arrivalmode);
+    formData.append("dispo", dispo);
+    
+    // Create and append symptoms as a JSON string
     const edDataKeys = {
         age: age,
         gender: gender,
         arrivalmode: arrivalmode,
-        previousdispo: dispo,
-        // Add more keys as needed for your dictionary
+        previousdispo: dispo
     };
 
-    // Map symptom names to corresponding keys in the dictionary
+    // Add symptoms to the dictionary
     symptomsList.forEach((symptom) => {
-        if (edDataKeys.hasOwnProperty(symptom)) {
-            edDataKeys[symptom] = true; // Set to true if symptom is present
-        }
+        edDataKeys[symptom] = true; // Set to true if the symptom is present
     });
 
-    // Add the updated dictionary to the form data
+    // Append the edDataKeys as a JSON string
     formData.append("edDataKeys", JSON.stringify(edDataKeys));
 
     try {
+        // Send the POST request
         const response = await fetch("/api/vitals", {
             method: "POST",
             body: formData, // Send formData which contains CSV and other parameters
@@ -38,6 +45,9 @@ async function sendVitalsData(csvFile, age, gender, arrivalmode, dispo, symptoms
 
         const data = await response.json();
         console.log("Response from backend:", data);
+
+        // Reset the file input to allow for new file selection
+        csvFileInput.value = ""; // Clear the input for re-upload
     } catch (error) {
         console.error("Error:", error);
     }
